@@ -1,0 +1,179 @@
+/*Limpiando los atributos por defecto de html: margin(margen de las cajas,padding:espacio entre la caja y el texto, box-sizing, página 
+ajuste al ancho de la página*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;    
+}
+body
+{
+    background-image: url("../../assets/img/fondoAzulClaro.jpg");
+
+    background-repeat: no-repeat; /*Atributo para que la imagen no se repita en la pantalla*/
+    background-size: cover; /*atributo para que la imagen se adapte a la pantalla*/
+    background-position: center; /*La imagen se centra en la pantalla*/
+    background-attachment: fixed; /*Abarca toda la pantalla*/
+}
+main
+{
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 100px;    
+    
+}
+
+.contenedorPrincipal
+{
+    width: 100%;/*Porcentaje de ancho del contenedor dentro de la página */
+    max-width: 800px; /*Ancho max que ocupa el contenedor principal en la página*/
+    margin: auto;/*Márgenes a ocupar denttro de la página, se adapta a las medidas que se le están dando */
+    position: relative; /*Atributo para poder aplicarle movimiento cuando se realicen las interacciones y la caja no permanezca estática*/
+}
+.cuadroLoginRegistro
+{
+    width: 100%;    
+    padding: 10 px 20 px; /*Define un margen de arriba hacia abajo y de izquierda a derecha, respectivamente*/
+    display: flex; /*hace que los cuadros estén uno al lado del otro*/
+    justify-content: center; /*Alinear el contenedor al centro*/
+    backdrop-filter: blur(5px); /*atributo que da la transparencia del cuadro dentro de la página*/
+    background-color: rgba(121, 147, 65, 0.6); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
+    border-radius: 10px; /*redondeando bordes en el contenedor que está detrás de la caja */
+}
+.cuadroLoginRegistro div
+{  /*Aplica los cambios a los div que estén dentro de cuadroLoginRegistro*/
+    margin: 100px 40px;
+    color: rgb(231, 223, 223);
+    transition: all 50ms; 
+
+}
+.cuadroLoginRegistro div p, .cuadroLoginRegistro div button{ /*aplicar cambios a buton y párrafo, separando los espacios entre ellos*/
+    margin-top: 30px;
+}
+.cuadroLoginRegistro div h2{ /*cambiando titulo de los cuadros grosor líneas y tamaño*/
+    font-weight: 400;
+    font-size: 26px;
+}
+.cuadroLoginRegistro button { /*dando atributos a los botones de los cuadros de la clase descrita*/
+    padding: 10px 40px;
+    border: 2px solid white;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600; /*grosor de la letra */
+    cursor: pointer;  /* Cambia el cursor cuando pasa por los botones para indicar que dirige aalguna opción*/
+    color: white;
+    outline: none;
+    transition: all 300ms;
+}
+.cuadroLoginRegistro button:hover{
+    background: white;
+    color: rgb(16, 81, 142);
+}
+/*Continuamos con los formularios*/
+.contenedorFormulariosRegistroeInicioSesion {
+    width: 100%;
+    max-width: 350px; /* Mantener el tamaño */
+    position: absolute; /* Mantener posición sobre el contenedor */
+    top: 8%; /* Reducido para subir la caja */
+    left: 25%; /* Ajustar según necesidad */
+    transform: translate(-50%, -50%); /* Mantener centrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.9s ease-in-out, transform 0,9s ease-in-out; /*transición suave cuando traslapan los formularios*/
+}
+
+
+.contenedorFormulariosRegistroeInicioSesion form {
+    width: 100%;
+    padding: 50px 20px; /* Reducir padding para que encaje mejor */
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+}
+.contenedorFormulariosRegistroeInicioSesion h2
+{
+    font-size: 20px; /*Tamaño de fuente del titulo del formulario registrarse*/
+    text-align: center; /*Alinear ese título al centro*/
+    margin-bottom: 20px; /*Separar las casillas del título*/
+    color: rgb(42, 7, 183); /*Color texto*/
+}
+.contenedorFormulariosRegistroeInicioSesion form input
+{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none; /*Eliminar los bordes de las casillas */
+    background: rgba(244, 240, 240, 0.938);/*Darle fondo a las casillas para ingresar la información*/
+    font-size: 16px;
+    outline: none; /*Quitar el borde negro que aparece al seleccionar una casilla*/
+}
+.contenedorFormulariosRegistroeInicioSesion form button /*Modificando el botón de registro en el formulario de registro*/
+{
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background: rgb(25, 101, 177);
+    color: aliceblue;
+    cursor: pointer; /*Indicar acceso a la tecla cuando se pasa el cursor por encima*/
+    outline: none;  /*Quitar el borde negro que aparece al seleccionar una casilla*/
+    margin-bottom: 25px;
+    border-radius: 25px;
+}
+.formularioInicioSesion  /*Dando cualidades al formulario de registro para quse se oculte y haga la transición y mostrar el de inicio*/
+{
+    opacity: 1;
+    display: block; 
+}
+.formularioRegistroInicial
+{
+    display: none; /*ocultando el formulario de registro inicial para que se vea el de inicio de sesión*/
+}
+
+/*Trabajando en el responsive design...hacer que cuando se cambien los tamaños de pantalla se adapte a ella */
+
+/*Vista pagina de inicio*/
+
+.cuadroLoginRegistro div .pa
+{
+    padding: 100px;
+}
+
+@media screen and (max-width: 850px)
+{
+    main
+    {
+        margin-top: 50px;        
+    }
+    .cuadroLoginRegistro  /*Dándole atributos a la caja trasera que está detrás de los formularios y al cambiar el tamaño 
+                            se posicione en columnas */
+    {
+        max-width: 350px;
+        height: 300px;    /*altura*/
+        flex-direction: column; /*haciendo que se acomode en columna los elementos*/
+        margin: auto;
+        margin-bottom: 150px;  
+    }
+    .cuadroLoginRegistro div
+    {
+        margin: 0px;
+        position:absolute; /*permitiendo que un elemento se ponga encima del otro*/
+    }
+    /*Responsive de los formularios*/
+    .contenedorFormulariosRegistroeInicioSesion
+    {
+        top: -10 px;
+        left: -5px;
+        margin: auto;
+    }
+    .contenedorFormulariosRegistroeInicioSesion form
+    {
+        position: relative;
+        
+
+    }
+}

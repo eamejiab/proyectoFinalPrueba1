@@ -1,0 +1,248 @@
+/* Quitar el scroll de la página */
+html, body {
+    height: 100%; /* Asegúrate de que el cuerpo y el HTML ocupen toda la altura de la ventana */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    margin: 0; /* Elimina cualquier margen predeterminado */
+}
+
+/* Limpiando los atributos por defecto de html */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;    
+}
+
+/* Estilo del cuerpo de la página */
+body {
+    background-image: url("../../assets/img/fondoAzulClaro.jpg");   
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh; /* Asegura que la página ocupe toda la altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el contenedor principal */
+main {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button:hover, .btn-finalizar:hover {
+    background: rgb(16, 81, 142);
+}
+
+/* Caja verde que rodea el formulario */
+.contenedorPrincipal {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Caja verde externa */
+.cajaFormulario {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(121, 147, 65, 0.6); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding: 1.5cm; /* Agregar un margen interior de 1.5cm */
+}
+
+/* Caja blanca interna que contiene el formulario */
+.cajaExteriorFormulario {
+    background-color: white; /* Fondo blanco */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: -0.5cm; /* Hace que sobresalga un poco respecto a la caja verde */
+}
+
+/* Estilo de los botones dentro del formulario */
+.contenedorPrincipal form div {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Colocar los botones en lista vertical */
+    align-items: center;
+    margin-top: 20px;
+}
+.contenedorPrincipal form div h2, p {
+    color: rgb(42, 7, 183); /*Color texto titulo y parrafo del formulario*/;
+}
+
+/* Estilo para los botones dentro del formulario */
+.contenedorPrincipal form div button, input {
+    width: 80%; /* Los botones ocuparán el 80% del ancho disponible */
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc; /* Borde delgado gris */
+    background: rgba(244, 240, 240, 0.938);/*Darle fondo a las casillas de los botones*/
+    color: rgb(185, 180, 180); /*color de texto*/
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto al pasar el cursor por encima del botón */
+.contenedorPrincipal form div button:hover {
+    background-color: #e0e0e0; /* Fondo gris más oscuro */
+    color: rgb(42, 7, 183);/* Cambiar el color del texto al negro */
+    border-color: #888; /* Borde más oscuro */
+}
+
+/* Estilo del pie de página */
+footer {
+    padding: 20px;
+    background-color: rgba(135, 33, 33, 0);
+    color: white;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+footer .finalizarSesion a {
+    position: absolute;
+    right: 390px;
+    bottom: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+footer .finalizarSesion a:hover {
+    text-decoration: underline;
+}
+/* Estilo general para el enlace "Finalizar sesión" */
+.finalizarSesion {
+    text-align: center; /* Centra el enlace dentro del footer */
+    margin-top: 20px; /* Espacio arriba del enlace */
+}
+
+.btn-finalizar {
+    display: inline-block; /* Permite que el enlace se comporte como un bloque en línea */
+    padding: 12px 30px; /* Relleno del botón */
+    background: rgb(25, 101, 177); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
+    color: aliceblue; /* Texto blanco */
+    font-size: 16px; /* Tamaño de la fuente */
+    text-align: center; /* Centra el texto dentro del enlace */
+    border: 1px solid ; /* Borde verde */    
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    transition: all 0.3s ease; /* Transición suave para los efectos hover */
+    cursor: pointer;
+}
+
+/*Estilo adicional pagina creación vehículo*/
+
+.cajaExteriorFormularioCreacionVehiculo form input  
+{
+    width: 100%; /* Los botones ocuparán el 80% del ancho disponible */
+    padding: 12px;
+    margin: 5px 0; /*Espacio entre los input del formulario*/
+    border: 1px solid #ccc; /* Borde delgado gris */
+    background: rgba(244, 240, 240, 0.938);/*Darle fondo a las casillas de los botones*/
+    color: rgb(185, 180, 180); /*color de texto*/
+    font-size: 16px;
+    font-weight: 600;    
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.contenedorPrincipalCreacionVehiculo form div h2, p 
+{
+    color: rgb(42, 7, 183); /*Color texto titulo y parrafo del formulario*/
+}
+
+.contenedorPrincipalCreacionVehiculo 
+{    
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.contenedorPrincipalCreacionVehiculo form div 
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Colocar los botones en lista vertical */
+    align-items: center;
+    margin-top: 20px;
+}
+.cajaFormularioCreacionVehiculo
+{
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(121, 147, 65, 0.6); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding:30px; /* Agregar un margen interior de 1.5cm */
+}
+.cajaExteriorFormularioCreacionVehiculo
+{
+    background-color: white; /* Fondo blanco */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: -0.5cm; /* Hace que sobresalga un poco respecto a la caja verde */
+}
+.btn-acciones
+{
+    display: inline-block; /* Permite que el enlace se comporte como un bloque en línea */
+    padding: 12px 20px; /* Relleno del botón */
+    background: rgb(25, 101, 177); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
+    color: aliceblue; /* Texto blanco */
+    font-size: 16px; /* Tamaño de la fuente */
+    text-align: center; /* Centra el texto dentro del enlace */    
+    border: 1px solid ; /* Borde verde */    
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    transition: all 0.3s ease; /* Transición suave para los efectos hover */
+    cursor: pointer;
+}
+
+/* Responsividad */
+@media screen and (max-width: 850px) {
+    /* Ajustar los botones para pantallas más pequeñas */
+    .contenedorPrincipal form div button {
+        width: 100%; /* Los botones ocuparán todo el ancho disponible */
+        padding: 12px;
+    }
+
+    /* Ajustar el margen superior del contenedor principal */
+    main {
+        margin-top: 50px;
+    }
+
+}
