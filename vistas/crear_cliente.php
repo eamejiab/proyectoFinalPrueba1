@@ -41,6 +41,7 @@ if ($id_rol == 3) { // Si es Operario, restringir acceso
         <div class="contenedorPrincipal">
             <div class="cajaFormulario">
                 <div class="cajaExteriorFormulario">
+                    <!--Envía los datos a ClienteControlador.php cuando se presiona el botón Registrar Cliente.-->
                     <form action="../controlador/ClienteControlador.php" method="POST">
                         <div>
                             <h2>Bienvenido, <?php echo htmlspecialchars($nombreCompleto); ?> 👋</h2>
@@ -60,9 +61,11 @@ if ($id_rol == 3) { // Si es Operario, restringir acceso
         </div>
     </main>
     <footer>
+        <div>
         <a href="crear_vehiculo.php" class="btn-finalizar">Crear vehículo</a>
         <a href="inicio.php" class="btn-finalizar">Historial vehículo</a>
         <a href="inicio.php" class="btn-finalizar">Inicio</a>
+        </div>        
     </footer>
 </body>
 
