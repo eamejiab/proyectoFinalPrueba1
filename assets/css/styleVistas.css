@@ -76,6 +76,10 @@ button:hover, .btn-finalizar:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     top: -0.5cm; /* Hace que sobresalga un poco respecto a la caja verde */
+    /* Ajustar el tamaño del contenedor del CRUD */
+    width: 100%;
+    max-width: 95%; /* Ajusta el tamaño del contenedor */
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario */
 }
 
 /* Estilo de los botones dentro del formulario */
@@ -231,6 +235,93 @@ footer .finalizarSesion a:hover {
     transition: all 0.3s ease; /* Transición suave para los efectos hover */
     cursor: pointer;
 }
+/*Estilos para la vista de la Gestión de usuarios y los cuadros que se presentan dentro de ella */
+ /* Estilos para el modal (ventana que se despliega al frente cuando se da a uno de los botones) */
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-contenido {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+.modal form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.modal form input, .modal form select {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+.modal form button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #1d72b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.modal form button:hover {
+    background-color: #155a8a;
+}
+/* Hacer que la tabla ocupe todo el ancho disponible */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+/* Ajustar el tamaño de las celdas */
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+/* Ajustar el ancho de las columnas */
+th:nth-child(1), td:nth-child(1) { width: 5%; }  /* ID */
+th:nth-child(2), td:nth-child(2) { width: 20%; } /* Nombre Completo */
+th:nth-child(3), td:nth-child(3) { width: 15%; } /* Usuario */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* Correo */
+th:nth-child(5), td:nth-child(5) { width: 15%; } /* Rol */
+th:nth-child(6), td:nth-child(6) { width: 10%; } /* Fecha Creación */
+th:nth-child(7), td:nth-child(7) { width: 10%; } /* Acciones */
+
+/* Permitir scroll en pantallas pequeñas */
+@media screen and (max-width: 850px) {
+    
+}
+
 
 /* Responsividad */
 @media screen and (max-width: 850px) {
@@ -239,7 +330,9 @@ footer .finalizarSesion a:hover {
         width: 100%; /* Los botones ocuparán todo el ancho disponible */
         padding: 12px;
     }
-
+    .cajaExteriorFormulario {
+        overflow-x: scroll; /* Habilita el scroll horizontal en pantallas pequeñas */
+    }
     /* Ajustar el margen superior del contenedor principal */
     main {
         margin-top: 50px;

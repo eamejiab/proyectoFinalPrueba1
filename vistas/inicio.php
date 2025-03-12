@@ -49,6 +49,7 @@ $nombreCompleto = $_SESSION['nombre_completo'] ?? 'Usuario Desconocido';
                             <button type="button" onclick="window.location.href='crear_vehiculo.php'">Crear vehículo</button>
                             <button type="button" onclick="window.location.href='historial_vehiculo.php'">Revisar historial vehículo</button>
                             <button type="button" onclick="window.location.href='trabajo_diario.php'">Apertura de trabajo diario</button>
+                            <button type="button" onclick="window.location.href='gestion_usuarios.php'">Gestión de usuarios</button>
                         </div>
                     </form>
                 </div>
