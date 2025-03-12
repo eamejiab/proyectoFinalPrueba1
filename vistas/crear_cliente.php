@@ -16,7 +16,7 @@ $nombreCompleto = $_SESSION['nombre_completo'] ?? 'Usuario Desconocido';
 $id_rol = $_SESSION['id_rol'] ?? null;
 if ($id_rol == 3) { // Si es Operario, restringir acceso
     echo '<script>
-            alert("⛔ No tienes permisos para acceder a esta sección.");
+            alert("⛔Acceso denegado!. No tienes permisos para crear clientes.");
             window.location = "inicio.php";
           </script>';
     exit();

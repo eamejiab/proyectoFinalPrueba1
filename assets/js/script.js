@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             caja_trasera_login.style.opacity = "1";
         }
     }
+    
 
     // Eventos para alternar los formularios
     botonInicioSesion.addEventListener("click", () => cambiarFormulario(true));

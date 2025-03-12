@@ -35,7 +35,7 @@ class UsuarioModelo {
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            return "✅ Registro exitoso.";
+            return "✅ Registro de usuario exitoso.";
         } else {
             return "❌ ERROR: No se pudo registrar el usuario.";
         }

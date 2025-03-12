@@ -15,7 +15,7 @@ $nombreCompleto = $_SESSION['nombre_completo'] ?? 'Usuario Desconocido';
 // Verificar que solo Administradores y Asesores puedan acceder
 if ($_SESSION['id_rol'] == 3) { // Si es Operario
     echo '<script>
-            alert("Acceso denegado. No tienes permisos para registrar vehículos.");
+            alert("⛔Acceso denegado!. No tienes permisos para registrar vehículos.");
             window.location = "inicio.php";
           </script>';
     exit();
@@ -25,12 +25,12 @@ if ($_SESSION['id_rol'] == 3) { // Si es Operario
 require_once __DIR__ . "/../modelo/Conexion.php";  
 $conexion = Conexion::conectar(); // Llamamos al método conectar() de la clase Conexion
 
-// Obtener la lista de clientes
+// Realiza la consulta en la BD para obtener la lista de clientes
 $clientesOptions = "";
 $sql = "SELECT id_cliente, nombre_completo FROM Clientes";
 $result = $conexion->query($sql);
 while ($row = $result->fetch_assoc()) {
-    $clientesOptions .= "<option value='{$row['id_cliente']}'>{$row['nombre_completo']}</option>";
+    $clientesOptions .= "<option value='{$row['id_cliente']}'>" . htmlspecialchars($row['nombre_completo']) . "</option>";
 }
 ?>
 
@@ -55,10 +55,10 @@ while ($row = $result->fetch_assoc()) {
                     <input type="text" name="placa" placeholder="Placa del Vehículo" required>
                     <input type="text" name="chasis" placeholder="Número de Chasis" required>
                     <input type="text" name="motor" placeholder="Número de Motor" required>
-                    <input type="text" name="cilindrada" placeholder="Cilindrada">
-                    <input type="text" name="marca" placeholder="Marca">
-                    <input type="text" name="clase" placeholder="Clase">
-                    <input type="text" name="modelo" placeholder="Modelo">
+                    <input type="text" name="cilindrada" placeholder="Cilindrada" required>
+                    <input type="text" name="marca" placeholder="Marca" required>
+                    <input type="text" name="clase" placeholder="Clase" required>
+                    <input type="text" name="modelo" placeholder="Modelo" required>
                     <select name="id_cliente" required>
                         <option value="" disabled selected>Seleccionar Cliente</option>
                         <?= $clientesOptions; ?>  <!-- Insertar opciones generadas por PHP -->
@@ -78,3 +78,8 @@ while ($row = $result->fetch_assoc()) {
     </footer>
 </body>
 </html>
+<!--
+    Muestra el formulario para registrar un vehículo.
+    Obtiene la lista de clientes registrados y los muestra en el <select>.
+    Envía los datos al VehiculoControlador.php cuando se presiona el botón Registrar Vehículo.
+-->

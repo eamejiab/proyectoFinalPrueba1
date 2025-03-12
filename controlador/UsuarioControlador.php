@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mostrar mensaje según el resultado
     echo '<script>
             alert("' . $resultado . '");
-            window.location = "../vistas/registro.php";
+            window.location = "../index.php";
           </script>';
     exit();
 }
