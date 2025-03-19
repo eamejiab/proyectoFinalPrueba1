@@ -48,3 +48,6 @@
     </footer>   
 </body>
 </html>
+
+<!--
+    Formulario para registrar usuario nuevo e ingresar usuario y contraseña al momento de la autenticación-->

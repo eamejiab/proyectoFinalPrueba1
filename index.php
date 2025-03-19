@@ -1,11 +1,6 @@
 <?php 
-session_start();
-
-// Si el usuario ya ha iniciado sesión, redirigirlo a la página de inicio
-if (isset($_SESSION['usuario'])) {
-    header("location: vistas/inicio.php");
-    exit();
-}
+//session_start(); //permite que la sesión permanezca iniciada para moverse entre las vistas después de su autenticación
+require_once __DIR__ ."/controlador/IndexControlador.php";
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +35,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
             </div>                
             
-            <!-- Contenedor de los formularios -->
+            <!-- Contenedor donde estarán los formularios -->
             <div class="contenedorFormulariosRegistroeInicioSesion">
                 <!-- Formulario de inicio de sesión -->
                 <form action="controlador/LoginControlador.php" class="formularioInicioSesion" method="POST">
@@ -57,7 +52,7 @@ if (isset($_SESSION['usuario'])) {
                     <input type="email" name="correo" placeholder="Correo Corporativo" required>
                     <input type="text" name="usuario" placeholder="Nombre de Usuario" required>
                     <input type="password" name="contrasena" placeholder="Contraseña" required>
-                    
+                <!--Lista de roles para los usuarios registrados-->   
                     <select name="id_rol" required>
                         <option value="" disabled selected>Selecciona un perfil</option>
                         <option value="1">Administrador</option>
@@ -69,15 +64,13 @@ if (isset($_SESSION['usuario'])) {
                 </form>
             </div>
         </div>
-    </main>
-<!--
-    <footer>
-        <div class="finalizarSesion">
-            <a href="index.php" class="btn-finalizar">Volver</a>
-        </div>
-    </footer>
--->
-    <!-- Script para manejo de los formularios -->
-    <script src="assets/js/script.js"></script>
+    </main>    
+    <script src="assets/js/script.js"></script> <!---->
 </body>
 </html>
+<!--
+    Página que aparece al ingresar a la URL del proyecto
+    2 Formularios por separado, el js los superpone al presionar los botones de inicio sesion y registrarse
+    Página principal donde se encuentran los formularios de inicio de sesión y registro de usuarios
+
+-->

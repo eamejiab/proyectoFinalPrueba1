@@ -35,7 +35,7 @@
                 </form>
 
 
-                    <!-- Mostrar mensaje de error si lo hay -->
+                    <!--Depuración: Mostrar mensaje de error si lo hay -->
                     <?php
                     if (isset($_GET['error'])) {
                         echo "<p style='color: red; text-align: center;'>" . htmlspecialchars($_GET['error']) . "</p>";
@@ -52,3 +52,8 @@
     </footer>
 </body>
 </html>
+
+    <!--
+        Formulario para recibir los datos del usuario al momento de ingresar un usuario
+        Lista desplegable para seleccionar el rol que se desea crear
+    -->

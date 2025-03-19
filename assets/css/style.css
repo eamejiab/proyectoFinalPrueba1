@@ -7,6 +7,7 @@ ajuste al ancho de la página*/
     text-decoration: none;
     font-family: sans-serif;    
 }
+/*estilo para el body de todo el proyecto*/
 body
 {
     background-image: url("../../assets/img/fondoAzulClaro.jpg");
@@ -16,6 +17,7 @@ body
     background-position: center; /*La imagen se centra en la pantalla*/
     background-attachment: fixed; /*Abarca toda la pantalla*/
 }
+/*Estilos utilizados en los main de los html del proyecto*/
 main
 {
     width: 100%;
@@ -24,7 +26,7 @@ main
     margin-top: 100px;    
     
 }
-
+/*Estilos de las cajas que están dentro de la pantalla donde están los formularios*/
 .contenedorPrincipal
 {
     width: 100%;/*Porcentaje de ancho del contenedor dentro de la página */
@@ -32,6 +34,7 @@ main
     margin: auto;/*Márgenes a ocupar denttro de la página, se adapta a las medidas que se le están dando */
     position: relative; /*Atributo para poder aplicarle movimiento cuando se realicen las interacciones y la caja no permanezca estática*/
 }
+/*Estilo para los formularios de la pantalla inicial en el Index, cuando se va a ingresar al sistema*/
 .cuadroLoginRegistro
 {
     width: 100%;    
@@ -42,21 +45,28 @@ main
     background-color: rgba(121, 147, 65, 0.6); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
     border-radius: 10px; /*redondeando bordes en el contenedor que está detrás de la caja */
 }
+/*Aplica los cambios a los div que estén dentro de cuadroLoginRegistro*/
 .cuadroLoginRegistro div
-{  /*Aplica los cambios a los div que estén dentro de cuadroLoginRegistro*/
+{  
     margin: 100px 40px;
     color: rgb(231, 223, 223);
     transition: all 50ms; 
 
 }
+/*Aplica los cambios a los p que estén dentro de cuadroLoginRegistro*/
 .cuadroLoginRegistro div p, .cuadroLoginRegistro div button{ /*aplicar cambios a buton y párrafo, separando los espacios entre ellos*/
     margin-top: 30px;
 }
-.cuadroLoginRegistro div h2{ /*cambiando titulo de los cuadros grosor líneas y tamaño*/
+/*cambiando titulo de los cuadros grosor líneas y tamaño*/
+.cuadroLoginRegistro div h2
+{ 
     font-weight: 400;
     font-size: 26px;
 }
-.cuadroLoginRegistro button { /*dando atributos a los botones de los cuadros de la clase descrita*/
+/*Cambiando el diseño de los botones en el inicio de sesión y registro */
+/*dando atributos a los botones de los cuadros de la clase descrita*/
+.cuadroLoginRegistro button 
+{ 
     padding: 10px 40px;
     border: 2px solid white;
     background: transparent;
@@ -67,12 +77,15 @@ main
     outline: none;
     transition: all 300ms;
 }
-.cuadroLoginRegistro button:hover{
+/*Efecto que se le da a los botones cuando se pasa el cursor por encima*/
+.cuadroLoginRegistro button:hover
+{
     background: white;
     color: rgb(16, 81, 142);
 }
-/*Continuamos con los formularios*/
-.contenedorFormulariosRegistroeInicioSesion {
+/*Diseño de las cajas de los formularios*/
+.contenedorFormulariosRegistroeInicioSesion 
+{
     width: 100%;
     max-width: 350px; /* Mantener el tamaño */
     position: absolute; /* Mantener posición sobre el contenedor */
@@ -85,15 +98,16 @@ main
     opacity: 1;
     transition: opacity 0.9s ease-in-out, transform 0,9s ease-in-out; /*transición suave cuando traslapan los formularios*/
 }
-
-
-.contenedorFormulariosRegistroeInicioSesion form {
+/*Diseño aplicado a los formularios de Registro e inicio de sesión*/
+.contenedorFormulariosRegistroeInicioSesion form
+ {
     width: 100%;
     padding: 50px 20px; /* Reducir padding para que encaje mejor */
     background-color: white;
     border-radius: 20px;
     position: absolute;
 }
+/*Diseño aplicado a los h2 de Registro e inicio de sesión*/
 .contenedorFormulariosRegistroeInicioSesion h2
 {
     font-size: 20px; /*Tamaño de fuente del titulo del formulario registrarse*/
@@ -101,6 +115,7 @@ main
     margin-bottom: 20px; /*Separar las casillas del título*/
     color: rgb(42, 7, 183); /*Color texto*/
 }
+/*Diseño aplicado a los formularios de Registro e inicio de sesión*/
 .contenedorFormulariosRegistroeInicioSesion form input
 {
     width: 100%;
@@ -111,7 +126,8 @@ main
     font-size: 16px;
     outline: none; /*Quitar el borde negro que aparece al seleccionar una casilla*/
 }
-.contenedorFormulariosRegistroeInicioSesion form button /*Modificando el botón de registro en el formulario de registro*/
+/*Modificando el botón de registro en el formulario de registro*/
+.contenedorFormulariosRegistroeInicioSesion form button 
 {
     padding: 10px 40px;
     margin-top: 40px;
@@ -124,11 +140,13 @@ main
     margin-bottom: 25px;
     border-radius: 25px;
 }
-.formularioInicioSesion  /*Dando cualidades al formulario de registro para quse se oculte y haga la transición y mostrar el de inicio*/
+/*Dando cualidades al formulario de registro para quse se oculte y haga la transición y mostrar el de inicio*/
+.formularioInicioSesion  
 {
     opacity: 1;
     display: block; 
 }
+/*Estilo inicial del formulario ocultando el formulario de registro, cambiando el display con js*/
 .formularioRegistroInicial
 {
     display: none; /*ocultando el formulario de registro inicial para que se vea el de inicio de sesión*/

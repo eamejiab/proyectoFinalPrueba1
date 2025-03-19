@@ -1,4 +1,5 @@
 <?php
+/*Objeto que guardará la conexión a la BD que será utilizado en el programa cada vez que sea necesaria */
 class Conexion {
     public static function conectar() {
         $servidor = "localhost";

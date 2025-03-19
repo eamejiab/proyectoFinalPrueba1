@@ -1,5 +1,6 @@
 <?php
-// Iniciar sesión y verificar permisos
+/*permite que la sesión permanezca iniciada para moverse entre las vistas después de su autenticación
+Iniciar sesión y verificar permisos, cuando el usuario es operario no tendría permiso y arroja mensaje de alerta*/
 session_start();
 if (!isset($_SESSION['usuario']) || !isset($_SESSION['id_rol'])) {
     echo '<script>
@@ -9,11 +10,11 @@ if (!isset($_SESSION['usuario']) || !isset($_SESSION['id_rol'])) {
     exit();
 }
 
-// Obtener nombre completo y rol
+// Obtener nombre completo y rol y se almacena en la variable para concatenarla en la vista con el saludo del usuario
 $nombreCompleto = $_SESSION['nombre_completo'] ?? 'Usuario Desconocido';
 
 // Verificar que solo Administradores y Asesores puedan acceder
-if ($_SESSION['id_rol'] == 3) { // Si es Operario
+if ($_SESSION['id_rol'] == 3) { // Si es Operario no permite la interacción y arroja el mensaje 
     echo '<script>
             alert("⛔Acceso denegado!. No tienes permisos para registrar vehículos.");
             window.location = "inicio.php";
@@ -21,14 +22,17 @@ if ($_SESSION['id_rol'] == 3) { // Si es Operario
     exit();
 }
 
-// Incluir la conexión a la base de datos
+// Direccionamiento a la conexión a la base de datos presente en la ruta y poder realizar la consulta que procede
 require_once __DIR__ . "/../modelo/Conexion.php";  
 $conexion = Conexion::conectar(); // Llamamos al método conectar() de la clase Conexion
 
-// Realiza la consulta en la BD para obtener la lista de clientes
+// Realiza la consulta en la BD para obtener la lista de clientes y de esta manera asociarlo a la creación del vehículo
 $clientesOptions = "";
 $sql = "SELECT id_cliente, nombre_completo FROM Clientes";
 $result = $conexion->query($sql);
+/*Se utiliza el while para recorrer el listado de clientes y traerlo como arreglo asociativo y acceder a los clientes en forma de lista
+cuando se está creando el vehículo, htmlspecialchars impoide que se inyecte código malicioso y convierte caracteres especiales en 
+string*/
 while ($row = $result->fetch_assoc()) {
     $clientesOptions .= "<option value='{$row['id_cliente']}'>" . htmlspecialchars($row['nombre_completo']) . "</option>";
 }
@@ -46,7 +50,7 @@ while ($row = $result->fetch_assoc()) {
 <body>
     <main class="contenedorPrincipal">
         <div class="cajaFormulario">
-            <div class="cajaExteriorFormulario">                
+            <div class="cajaExteriorFormulario" id="crearVehiculo">                
                 <form action="../controlador/VehiculoControlador.php" method="POST">
                     <div>
                         <h2>Bienvenido, <?php echo htmlspecialchars($nombreCompleto); ?> 👋</h2>                        
@@ -61,14 +65,14 @@ while ($row = $result->fetch_assoc()) {
                     <input type="text" name="modelo" placeholder="Modelo" required>
                     <select name="id_cliente" required>
                         <option value="" disabled selected>Seleccionar Cliente</option>
-                        <?= $clientesOptions; ?>  <!-- Insertar opciones generadas por PHP -->
+                        <?= $clientesOptions; ?>  <!-- Trae el listado de clientes generadas por PHP -->
                     </select>
                     <button type="submit">Registrar Vehículo</button>                                       
                 </form>
             </div>
         </div>
     </main>
-
+    <!--Botones para interactuar entre las vistas dentro del entorno y las diferentes funciones del programa-->
     <footer>
         <div class="footer-links">
             <a href="crear_cliente.php" class="btn-finalizar">Crear cliente</a>
@@ -80,6 +84,6 @@ while ($row = $result->fetch_assoc()) {
 </html>
 <!--
     Muestra el formulario para registrar un vehículo.
-    Obtiene la lista de clientes registrados y los muestra en el <select>.
+    Tras tener la lista de clientes registrados en la BD en el arreglo asociativo en la parte superior los muestra en el <select>.
     Envía los datos al VehiculoControlador.php cuando se presiona el botón Registrar Vehículo.
 -->

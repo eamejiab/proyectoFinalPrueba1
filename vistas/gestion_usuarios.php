@@ -1,6 +1,7 @@
 <?php
-// Iniciar sesión y verificar si el usuario es administrador
+//Verificar si el usuario ha iniciado sesión
 session_start();
+//Valida que la sesión no esté vacía(sin iniciar) o el usuario sea diferente a administrador y envía el mensaje denegado)
 if (!isset($_SESSION['usuario']) || $_SESSION['id_rol'] != 1) {
     echo '<script>
             alert("⛔ Acceso denegado. Solo los administradores pueden gestionar usuarios.");
@@ -9,11 +10,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['id_rol'] != 1) {
     exit();
 }
 
-// Conectar a la base de datos
+// Trae los datos de la conexión para que pueda acceder a la BD
 require_once __DIR__ . "/../modelo/Conexion.php";  
 $conexion = Conexion::conectar(); 
 
-// Consulta para obtener los usuarios
+// Consulta que se hace en la BD para traer el listado de usuarios registrados y almacenados en la tabla usuarios
 $sql = "SELECT id_usuario, nombre_completo, nombre_usuario, correo_corporativo, 
                CASE 
                    WHEN id_rol = 1 THEN 'Administrador'

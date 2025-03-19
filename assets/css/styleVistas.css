@@ -76,10 +76,17 @@ button:hover, .btn-finalizar:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     top: -0.5cm; /* Hace que sobresalga un poco respecto a la caja verde */
-    /* Ajustar el tamaño del contenedor del CRUD */
+    /* Ajustar el tamaño del contenedor del CRUD en el ancho */
     width: 100%;
     max-width: 95%; /* Ajusta el tamaño del contenedor */
-    overflow-x: auto; /* Agrega scroll horizontal si es necesario */
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario */    
+} 
+/*Ajustando el tamaño al formulario de crear vehículos ya que el número de casillas no cabe en pantalla*/
+#crearVehiculo {
+    /*ajusta el tamaño vertical del formulario en caso de no caber en pantalla y utiliza el scroll*/
+    height: 100%;
+    max-height:90% ;
+    overflow-y: auto;
 }
 
 /* Estilo de los botones dentro del formulario */
@@ -127,7 +134,7 @@ footer {
     width: 100%;
     bottom: 0;
 }
-
+/*Estilo del botón salir en la vista de inicio que finaliza la sesión*/
 footer .finalizarSesion a {
     position: absolute;
     right: 390px;
@@ -136,7 +143,7 @@ footer .finalizarSesion a {
     text-decoration: none;
     font-size: 16px;
 }
-
+/*Efecto para el botón de salir en la vista de inicio*/
 footer .finalizarSesion a:hover {
     text-decoration: underline;
 }
@@ -145,7 +152,7 @@ footer .finalizarSesion a:hover {
     text-align: center; /* Centra el enlace dentro del footer */
     margin-top: 20px; /* Espacio arriba del enlace */
 }
-
+/*Estilos aplicados a los input dentro de los formularios de las vistas*/
 .btn-finalizar {
     display: inline-block; /* Permite que el enlace se comporte como un bloque en línea */
     padding: 12px 30px; /* Relleno del botón */
@@ -160,7 +167,7 @@ footer .finalizarSesion a:hover {
     cursor: pointer;
 }
 
-/*Estilo adicional pagina creación vehículo*/
+/*Estilo adicional para la vista creación vehículo*/
 
 .cajaExteriorFormularioCreacionVehiculo form input  
 {
@@ -200,27 +207,7 @@ footer .finalizarSesion a:hover {
     align-items: center;
     margin-top: 20px;
 }
-.cajaFormularioCreacionVehiculo
-{
-    width: 100%;
-    padding: 10px;
-    background-color: rgba(121, 147, 65, 0.6); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-    margin-bottom: 20px;
-    position: relative;
-    padding:30px; /* Agregar un margen interior de 1.5cm */
-}
-.cajaExteriorFormularioCreacionVehiculo
-{
-    background-color: white; /* Fondo blanco */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    top: -0.5cm; /* Hace que sobresalga un poco respecto a la caja verde */
-}
+/*Estilo para los botones*/
 .btn-acciones
 {
     display: inline-block; /* Permite que el enlace se comporte como un bloque en línea */
@@ -236,7 +223,7 @@ footer .finalizarSesion a:hover {
     cursor: pointer;
 }
 /*Estilos para la vista de la Gestión de usuarios y los cuadros que se presentan dentro de ella */
- /* Estilos para el modal (ventana que se despliega al frente cuando se da a uno de los botones) */
+ /* Estilos para el modal (ventana que se despliega al frente cuando se da a uno de los botones editar o eliminar) */
  .modal {
     display: none;
     position: fixed;
@@ -293,14 +280,14 @@ footer .finalizarSesion a:hover {
 .modal form button:hover {
     background-color: #155a8a;
 }
-/* Hacer que la tabla ocupe todo el ancho disponible */
+/* Hacer que la tabla donde se listan los usuarios de la BD ocupe todo el ancho disponible */
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
 }
 
-/* Ajustar el tamaño de las celdas */
+/* Ajustar el tamaño de las celdas de la tabla*/
 th, td {
     padding: 10px;
     text-align: center;
