@@ -14,7 +14,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['id_rol'] != 1) {
 require_once __DIR__ . "/../modelo/Conexion.php";  
 $conexion = Conexion::conectar(); 
 
-// Consulta que se hace en la BD para traer el listado de usuarios registrados y almacenados en la tabla usuarios
+/*  Consulta que se hace en la BD para traer el listado de usuarios registrados y almacenados en la tabla usuarios
+    El siguiente segmento de código consulta información de la tabla Usuarios, seleccionando varias columnas y asignando 
+    un valor de texto a la columna rol dependiendo del valor de id_rol. Los resultados de esta consulta se almacenan en la 
+    variable $resultado para poderlos utilizar posteriormente en la lista de usuarios de la vista.
+*/
 $sql = "SELECT id_usuario, nombre_completo, nombre_usuario, correo_corporativo, 
                CASE 
                    WHEN id_rol = 1 THEN 'Administrador'
@@ -51,8 +55,9 @@ if (!$resultado) {
                 
                 <!-- Tabla de usuarios -->
                 <table>
-                    <thead>
-                        <tr>
+                    <thead>     <!--Encabezado de la tabla-->
+                        <tr> <!--Fila de los encabezados-->
+                             <!--Resaltar los encabezados-->
                             <th>ID</th>
                             <th>Nombre Completo</th>
                             <th>Usuario</th>
@@ -62,7 +67,7 @@ if (!$resultado) {
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="tablaUsuarios">
+                    <tbody id="tablaUsuarios"> <!--Cuerpo de la tabla donde se mostrarán los usuarios de la tabla Usuarios-->
                         <?php while ($usuario = $resultado->fetch_assoc()) : ?>
                         <tr>
                             <td><?= htmlspecialchars($usuario['id_usuario']); ?></td>

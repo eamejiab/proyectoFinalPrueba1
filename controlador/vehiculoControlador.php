@@ -38,10 +38,10 @@
             </script>';
       exit();
   }
-?>
-<!--
+  /*  
     Recibe los datos del formulario crear_vehiculo.php mediante POST.
     Valida que los campos obligatorios no estén vacíos.
     Llama al modelo en VehículoModelo.php para registrar el vehículo.
-    Muestra un mensaje de éxito o error y redirige a crear_vehiculo.php.
--->
+    Muestra un mensaje de éxito o error y redirige a crear_vehiculo.php.  
+  */
+?>
