@@ -5,7 +5,7 @@
   /* Configurar la respuesta como JSON para las acciones AJAX, para hacer que las solicitudes no tengan que recargar
   cada vez la página y sea mas fluida la interacción a realizar cada solicitud*/
   header("Content-Type: application/json");
-  
+    
   // Verificar que sea una solicitud POST
   if ($_SERVER["REQUEST_METHOD"] != "POST") {
     
@@ -75,10 +75,12 @@
     // Intentar actualizar los datos del usuario
     $resultado = UsuarioModelo::editarUsuario($id_usuario, $nombre, $usuario, $correo, $id_rol);
 
-    if ($resultado) {        
-        echo json_encode(["success" => true, "message" => "✅ Usuario actualizado correctamente."]);
-    } else {        
-        echo json_encode(["success" => false, "error" => "❌ Error al actualizar el usuario."]);
+    if ($resultado === true) {
+      echo json_encode(["success" => true, "message" => "✅ Usuario actualizado correctamente."]);
+    } elseif ($resultado === "⚠️ INFO: No se realizaron cambios.") {
+      echo json_encode(["success" => false, "error" => $resultado]);
+    } else {
+      echo json_encode(["success" => false, "error" => $resultado]);
     }
     exit();
   }

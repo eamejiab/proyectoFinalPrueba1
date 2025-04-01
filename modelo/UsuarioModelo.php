@@ -22,7 +22,7 @@ class UsuarioModelo {
         $stmt->bind_param("ss", $correo, $usuario);
         $stmt->execute();
         $stmt->store_result();
-        /*Si resultado arroja 1 valor muestra el mensaje*/
+        //Si resultado arroja 1 valor muestra el mensaje/
         if ($stmt->num_rows > 0) {
             return "⚠️ ATENCIÓN: El usuario o correo ya están registrados.";
         }
@@ -71,8 +71,9 @@ class UsuarioModelo {
         if ($resultado->num_rows > 0) {
             $fila = $resultado->fetch_assoc();
 
-            // 📢 Prueba de depuración: Mostrar datos obtenidos
+            /* 📢 Prueba de depuración: Mostrar datos obtenidos
             var_dump($fila);
+            */
             /*
                 La función password_verify() es una función de PHP utilizada para verificar si una contraseña en texto plano 
                 coincide con un hash de contraseña.
@@ -88,8 +89,11 @@ class UsuarioModelo {
      */
     public static function editarUsuario($id_usuario, $nombre, $usuario, $correo, $id_rol) {
         $conexion = Conexion::conectar();
-
-        // Verificar si el usuario existe trayendo el id desde el modal que se selecciona para editar
+        //Validar que la conexión a la BD sea exitosa
+        if (!$conexion) {
+            return "❌ ERROR: No se pudo conectar a la base de datos.";
+        }
+        // Verificar si el usuario existe trayendo el id desde el modal que se selecciona para editar        
         $sql_verificar = "SELECT id_usuario FROM Usuarios WHERE id_usuario = ?";
         $stmt = $conexion->prepare($sql_verificar);
         if (!$stmt) {
@@ -101,6 +105,20 @@ class UsuarioModelo {
 
         if ($stmt->num_rows === 0) {
             return "⚠️ ERROR: El usuario no existe.";
+        }
+
+        // Verificar si el correo o nombre de usuario ya existen en otro usuario
+        $sql_verificar_existencia = "SELECT id_usuario FROM Usuarios WHERE (correo_corporativo = ? OR nombre_usuario = ?) AND id_usuario != ?";
+        $stmt = $conexion->prepare($sql_verificar_existencia);
+        if (!$stmt) {
+            return "❌ ERROR en consulta de verificación: " . $conexion->error;
+        }
+        $stmt->bind_param("ssi", $correo, $usuario, $id_usuario);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            return "⚠️ INFO: El correo o usuario ya están en uso por otro usuario.";
         }
 
         // Actualizar datos del usuario, usando la consulta UPDATE toma los datos modificados en el modal,los envía a la tabla de la BD
@@ -116,7 +134,7 @@ class UsuarioModelo {
         if ($stmt->affected_rows > 0) {
             return true; // ✅ Usuario actualizado con éxito
         } else {
-            return "❌ ERROR: No se realizaron cambios.";
+            return "⚠️ INFO: No hubo cambios en la información enviada.";
         }
     }
 }
@@ -129,4 +147,3 @@ class UsuarioModelo {
     de la vista gestios_usuarios.php
 */
 ?>
-
