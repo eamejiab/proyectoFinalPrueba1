@@ -20,19 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function anchoPagina() {
         console.log("📢 Ejecutando anchoPagina()");
-    
-        // Verificamos si los elementos existen antes de acceder a ellos
-        const caja_trasera_login = document.querySelector(".cuadroLogin");
-        const caja_trasera_register = document.querySelector(".cuadroRegistroInicial");
-        const formulario_login = document.querySelector(".formularioInicioSesion");
-        const formulario_register = document.querySelector(".formularioRegistroInicial");
-        const contenedor_login_register = document.querySelector(".contenedorFormulariosRegistroeInicioSesion");
-    
+
         if (!caja_trasera_login || !caja_trasera_register || !formulario_login || !formulario_register || !contenedor_login_register) {
             console.warn("⚠️ anchoPagina() no encontró todos los elementos necesarios.");
-            return; // Salimos de la función para evitar errores
+            return;
         }
-    
+
         if (window.innerWidth > 850) {
             caja_trasera_login.style.display = "block";
             caja_trasera_register.style.display = "block";
@@ -45,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             contenedor_login_register.style.left = "0";
         }
     }
-    
+
     anchoPagina();
 
     function iniciarSesion() {
@@ -71,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function register() {
         console.log("📌 Click en Registrarse");
+
         if (!formulario_register || !formulario_login) {
             console.error("⚠️ Error: No se encontraron los formularios en el DOM.");
             return;
@@ -89,6 +83,54 @@ document.addEventListener("DOMContentLoaded", function () {
             caja_trasera_login.style.display = "block";
         }
     }
+
+    // ==============================
+    // 🟢 MANEJO DEL REGISTRO DE USUARIOS
+    // ==============================
+
+    if (formulario_register) {
+        formulario_register.addEventListener("submit", function (event) {
+            event.preventDefault(); // Evitar el envío tradicional del formulario
+
+            const formData = new FormData(formulario_register);
+            formData.append("accion", "registrar"); // Se agrega la acción "registrar"
+
+            fetch("controlador/UsuarioControlador.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registro exitoso",
+                        text: data.message,
+                        confirmButtonColor: "#28a745",
+                    });
+                    formulario_register.reset(); // Limpiar el formulario
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error en el registro",
+                        text: data.error,
+                        confirmButtonColor: "#dc3545",
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("❌ Error en la solicitud:", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error inesperado",
+                    text: "Hubo un problema con la solicitud. Intenta de nuevo.",
+                    confirmButtonColor: "#dc3545",
+                });
+            });
+        });
+    }
+});
+
 
     /*==============================
          🟢 MANEJO DEL MODAL DE EDICIÓN DE USUARIOS
@@ -231,7 +273,7 @@ if (formEditar) {
 } else {
     console.warn("⚠️ No se encontró el formulario de edición en el DOM.");
 }
-});
+
 /*
     Explicacion del modal para edición de usuarios:
 

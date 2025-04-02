@@ -16,6 +16,9 @@ require_once __DIR__ ."/controlador/IndexControlador.php";
 
     <!-- jQuery y JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
 </head>
 <body>
     <main>
@@ -46,12 +49,13 @@ require_once __DIR__ ."/controlador/IndexControlador.php";
                 </form>
 
                 <!-- Formulario de registro -->
-                <form action="controlador/UsuarioControlador.php" method="POST" class="formularioRegistroInicial">
+                <form action="controlador/UsuarioControlador.php" method="POST" class="formularioRegistroInicial" id="formRegistro">
                     <h2>Registrarse en nuestro equipo</h2>
-                    <input type="text" name="nombre_completo" placeholder="Nombre Completo" required>
-                    <input type="email" name="correo" placeholder="Correo Corporativo" required>
-                    <input type="text" name="usuario" placeholder="Nombre de Usuario" required>
-                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <input type="text" id="nombre" name="nombre_completo" placeholder="Nombre Completo" required>
+                    <input type="email" id="correo" name="correo" placeholder="Correo Corporativo" required>
+                    <input type="text" id="usuario" name="usuario" placeholder="Nombre de Usuario" required>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+
                 <!--Lista de roles para los usuarios registrados-->   
                     <select name="id_rol" required>
                         <option value="" disabled selected>Selecciona un perfil</option>
