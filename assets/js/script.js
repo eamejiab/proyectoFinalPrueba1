@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     anchoPagina();
 
     function iniciarSesion() {
-        console.log("📌 Click en Iniciar Sesión");
+        console.log("📌 Click en Iniciar Sesión"); //Depuración para pruebas
         if (!formulario_register || !formulario_login) {
             console.error("⚠️ Error: No se encontraron los formularios en el DOM.");
             return;

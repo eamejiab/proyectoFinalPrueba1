@@ -41,7 +41,7 @@ class UsuarioModelo {
         $stmt->execute();
         /**Si se afecta una fila en la tabla arroja el mensaje positivo */
         if ($stmt->affected_rows > 0) {
-            return "✅ REALIZADO: El usuario se registró con éxito.";
+            return true;  //✅ Devuelve true si se registró correctamente para que resultado no reciba strings y genere error en el json
         } else {
             return "❌ ERROR: No se pudo registrar el usuario.";
         }

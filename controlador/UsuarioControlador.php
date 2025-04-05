@@ -75,14 +75,15 @@
     // Intentar actualizar los datos del usuario
     $resultado = UsuarioModelo::editarUsuario($id_usuario, $nombre, $usuario, $correo, $id_rol);
 
-    if ($resultado === true) {
-      echo json_encode(["success" => true, "message" => "✅ Usuario actualizado correctamente."]);
-    } elseif ($resultado === "⚠️ INFO: No se realizaron cambios.") {
-      echo json_encode(["success" => false, "error" => $resultado]);
-    } else {
-      echo json_encode(["success" => false, "error" => $resultado]);
-    }
-    exit();
+    error_log("📌 Resultado en PHP: " . print_r($resultado, true));
+
+if ($resultado === true) {        
+    echo json_encode(["success" => true, "message" => "✅ Usuario registrado exitosamente."]);
+} else {        
+    echo json_encode(["success" => false, "error" => "❌ Error en el registro."]);
+}
+exit();
+
   }
   // 📌 Si no se reconoce la acción 
   echo json_encode(["success" => false, "error" => "⚠️ Acción no válida."]);
