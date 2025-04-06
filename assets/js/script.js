@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             caja_trasera_login.style.display = "none";
         }
     }
-
+    //Configuración de mensaje en caso de que los formularios de registro e inicio de sesión no carguen 
     function register() {
         console.log("📌 Click en Registrarse");
 
@@ -83,10 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
             caja_trasera_login.style.display = "block";
         }
     }
-
-    // ==============================
-    // 🟢 MANEJO DEL REGISTRO DE USUARIOS
-    // ==============================
+   
+    //MANEJO DEL REGISTRO DE USUARIOS    
 
     if (formulario_register) {
         formulario_register.addEventListener("submit", function (event) {

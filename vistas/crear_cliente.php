@@ -63,9 +63,10 @@ if ($id_rol == 3) { // Si es Operario, restringir acceso
         </main>
         <!--Botones para interactuar entre las vistas dentro del entorno y las diferentes funciones del programa-->
         <footer>
-            <div>
+            <div class="centrarBotones">
             <a href="crear_vehiculo.php" class="btn-finalizar">Crear vehículo</a>
-            <a href="inicio.php" class="btn-finalizar">Historial vehículo</a>
+            <a href="historial_vehiculo.php" class="btn-finalizar">Historial vehículo</a>
+            <a href="trabajo_diario.php" class="btn-finalizar">Trabajo diario</a>
             <a href="inicio.php" class="btn-finalizar">Inicio</a>
             </div>        
         </footer>

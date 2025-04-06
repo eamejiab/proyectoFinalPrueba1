@@ -16,7 +16,7 @@ require_once __DIR__ ."/controlador/IndexControlador.php";
 
     <!-- jQuery y JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!---->
+    <!--Libreria de sweetalert2 para personalizar los mensajes con respuesta mas llamativa-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 
 </head>
@@ -57,7 +57,7 @@ require_once __DIR__ ."/controlador/IndexControlador.php";
                     <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
 
                 <!--Lista de roles para los usuarios registrados-->   
-                    <select name="id_rol" required>
+                    <select name="id_rol" required class="seleccionRol">
                         <option value="" disabled selected>Selecciona un perfil</option>
                         <option value="1">Administrador</option>
                         <option value="2">Asesor</option>

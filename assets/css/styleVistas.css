@@ -15,7 +15,8 @@ html, body {
 }
 
 /* Estilo del cuerpo de la página */
-body {
+body 
+{
     background-image: url("../../assets/img/fondoAzulClaro.jpg");   
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,7 +31,8 @@ body {
 }
 
 /* Estilo para el contenedor principal */
-main {
+main
+{
     width: 100%;
     padding: 20px;
     margin: auto;
@@ -40,12 +42,14 @@ main {
     align-items: center;
 }
 
-button:hover, .btn-finalizar:hover {
+button:hover, .btn-finalizar:hover
+{
     background: rgb(16, 81, 142);
 }
 
 /* Caja verde que rodea el formulario */
-.contenedorPrincipal {
+.contenedorPrincipal 
+{
     width: 100%;
     max-width: 800px;
     margin: auto;
@@ -53,10 +57,12 @@ button:hover, .btn-finalizar:hover {
     display: flex;
     justify-content: center;
     padding: 20px;
+    /*overflow-y: auto; /* Agrega scroll horizontal si es necesario, para nuestro caso en la tabla de usuarios del módulo gestión */ 
 }
 
 /* Caja verde externa */
-.cajaFormulario {
+.cajaFormulario
+{
     width: 100%;
     padding: 20px;
     background-color: rgba(121, 147, 65, 0.6); /*Color de fondo del cuadro; el 0.6 es la opacidad del mismo*/
@@ -65,7 +71,7 @@ button:hover, .btn-finalizar:hover {
     margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
-    padding: 1.5cm; /* Agregar un margen interior de 1.5cm */
+    padding: 1.5cm; /* Agregar un margen interior de 1.5cm */       
 }
 
 /* Caja blanca interna que contiene el formulario */
@@ -79,14 +85,38 @@ button:hover, .btn-finalizar:hover {
     /* Ajustar el tamaño del contenedor del CRUD en el ancho */
     width: 100%;
     max-width: 95%; /* Ajusta el tamaño del contenedor */
-    overflow-x: auto; /* Agrega scroll horizontal si es necesario */    
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario, para nuestro caso en gestión usuarios */ 
+   /* overflow-y: auto; /* Agrega scroll vertical si es necesario */
 } 
+/*Estilo del select para la página de inicio en el formulario de registro selección de roles*/
+.seleccionRol
+{    
+    border-radius: 25px;
+    background: rgba(244, 240, 240, 0.938);/*Darle fondo a las casillas de los botones*/
+    border: 1px solid #ccc(21, 62, 229);
+    color: rgb(25, 101, 177); /*Color de texto; el 0.6 es la opacidad del mismo*/
+    
+    font-size: 15px; /* Tamaño de la fuente */
+
+}
+
 /*Ajustando el tamaño al formulario de crear vehículos ya que el número de casillas no cabe en pantalla*/
 #crearVehiculo {
     /*ajusta el tamaño vertical del formulario en caso de no caber en pantalla y utiliza el scroll*/
     height: 100%;
-    max-height:90% ;
-    overflow-y: auto;
+    max-height:78% ; /*Tamaño de la caja donde están los input de los datos que se van a ingresar*/
+}
+/*Estilos de la lista de despliegue de clientes en el módulo creación vehículo*/
+.seleccionCliente
+{
+    margin-left: -180px; /*Posición a la izquierda del select*/
+    border-radius: 25px;
+    background: rgba(244, 240, 240, 0.938);/*Darle fondo a las casillas de los botones*/
+    border: 1px solid #ccc(21, 62, 229);
+    color: rgb(25, 101, 177); /*Color de texto; el 0.6 es la opacidad del mismo*/
+    
+    font-size: 16px; /* Tamaño de la fuente */
+
 }
 
 /* Estilo de los botones dentro del formulario */
@@ -124,7 +154,7 @@ button:hover, .btn-finalizar:hover {
     border-color: #888; /* Borde más oscuro */
 }
 
-/* Estilo del pie de página */
+/* Estilo del pie de página, botones de la interacción entre módulos*/
 footer {
     padding: 20px;
     background-color: rgba(135, 33, 33, 0);
@@ -133,7 +163,9 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
+    margin-left: -15px; /*Alineando los botones de los módulos para que centren en el contenedor*/
 }
+
 /*Estilo del botón salir en la vista de inicio que finaliza la sesión*/
 footer .finalizarSesion a {
     position: absolute;
@@ -224,6 +256,12 @@ footer .finalizarSesion a:hover {
 }
 /*Estilos para la vista de la Gestión de usuarios y los cuadros que se presentan dentro de ella */
  /* Estilos para el modal (ventana que se despliega al frente cuando se da a uno de los botones editar o eliminar) */
+
+ #gestionUsuarios {
+    /*ajusta el tamaño vertical del formulario en caso de no caber en pantalla y utiliza el scroll*/
+    height: 100%;
+    max-height:60% ;    
+}
  .modal {
     display: none;
     position: fixed;
@@ -284,8 +322,8 @@ footer .finalizarSesion a:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-}
+    background-color: white;        
+}   
 
 /* Ajustar el tamaño de las celdas de la tabla*/
 th, td {

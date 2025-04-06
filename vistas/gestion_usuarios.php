@@ -47,7 +47,7 @@ if (!$resultado) {
 <body>
     <main class="contenedorPrincipal">
         <div class="cajaFormulario">
-            <div class="cajaExteriorFormulario">
+            <div class="cajaExteriorFormulario" id="gestionUsuarios">
                 <h2>👤 Gestión de Usuarios</h2>
 
                 <!-- Campo de búsqueda -->

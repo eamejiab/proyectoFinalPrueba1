@@ -55,7 +55,8 @@ while ($row = $result->fetch_assoc()) {
                     <div>
                         <h2>Bienvenido, <?php echo htmlspecialchars($nombreCompleto); ?> 👋</h2>                        
                         <h2>Registrar vehículo</h2>
-                    </div>                    
+                    </div>
+                    <div>                    
                     <input type="text" name="placa" placeholder="Placa del Vehículo" required>
                     <input type="text" name="chasis" placeholder="Número de Chasis" required>
                     <input type="text" name="motor" placeholder="Número de Motor" required>
@@ -63,11 +64,12 @@ while ($row = $result->fetch_assoc()) {
                     <input type="text" name="marca" placeholder="Marca" required>
                     <input type="text" name="clase" placeholder="Clase" required>
                     <input type="text" name="modelo" placeholder="Modelo" required>
-                    <select name="id_cliente" required>
+                    <select name="id_cliente" required class="seleccionCliente">
                         <option value="" disabled selected>Seleccionar Cliente</option>
                         <?= $clientesOptions; ?>  <!-- Trae el listado de clientes generadas por PHP -->
                     </select>
-                    <button type="submit">Registrar Vehículo</button>                                       
+                    <button type="submit">Registrar Vehículo</button>   
+                    </div>                                    
                 </form>
             </div>
         </div>
@@ -76,7 +78,8 @@ while ($row = $result->fetch_assoc()) {
     <footer>
         <div class="footer-links">
             <a href="crear_cliente.php" class="btn-finalizar">Crear cliente</a>
-            <a href="inicio.php" class="btn-finalizar">Historial vehículo</a>
+            <a href="historial_vehiculo.php" class="btn-finalizar">Historial vehículo</a>
+            <a href="trabajo_diario.php" class="btn-finalizar">Trabajo diario</a>
             <a href="inicio.php" class="btn-finalizar">Inicio</a>                       
         </div>
     </footer>
