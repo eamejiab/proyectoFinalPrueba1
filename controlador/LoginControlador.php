@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . "/../modelo/UsuarioModelo.php";
+
 /*
     Este bloque de código está diseñado para manejar los datos que el usuario envía a través del formulario login.php
     usando el método POST. Los datos de los campos usuario y contrasena son obtenidos desde el formulario y asignados 
@@ -9,14 +10,15 @@ require_once __DIR__ . "/../modelo/UsuarioModelo.php";
     causar errores o inconvenientes al procesar la información.
 */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    header("Content-Type: application/json"); // Muy importante para fetch indicando que la respuesta será Json
     $usuario = trim($_POST['usuario']);
     $contrasena = trim($_POST['contrasena']);
     // Validar que los campos de las variables anteriores no estén vacíos, de lo contrario muestra el mensaje
     if (empty($usuario) || empty($contrasena)) {
-        echo '<script>
-                alert("Por favor, complete todos los campos.");
-                window.location = "../index.php";
-              </script>';
+        echo json_encode([
+            "success" => false,
+            "error" => "⚠️ Por favor, complete todos los campos."
+        ]);
         exit();
     }
     /*Accede al Objeto de UsuarioModelo.php para validar que los datos ingresados por el usuario tengan una 
@@ -36,15 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['id_rol'] = $usuarioValido['id_rol'];
         $_SESSION['nombre_completo'] = $usuarioValido['nombre_completo']; // Guardamos el nombre completo
 
-        header("location: ../vistas/inicio.php");
-        exit();
+        echo json_encode([
+            "success" => true,
+            "redirect" => "vistas/inicio.php"
+        ]);
     } else {
-        echo '<script>
-                alert("Usuario o contraseña incorrectos.");
-                window.location = "../index.php";
-              </script>';
-        exit();
+        echo json_encode([
+            "success" => false,
+            "error" => "⚠️ Usuario o contraseña incorrectos."
+        ]);
     }
+        exit();    
 }
 
 ?>

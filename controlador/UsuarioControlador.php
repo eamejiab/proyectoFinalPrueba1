@@ -78,9 +78,9 @@
     error_log("📌 Resultado en PHP: " . print_r($resultado, true));
 
 if ($resultado === true) {        
-    echo json_encode(["success" => true, "message" => "✅ Usuario registrado exitosamente."]);
+    echo json_encode(["success" => true, "message" => "✅ Cambios registrados exitosamente."]);
 } else {        
-    echo json_encode(["success" => false, "error" => "❌ Error en el registro."]);
+    echo json_encode(["success" => false, "error" => "⚠️ Error en el registro."]);
 }
 exit();
 

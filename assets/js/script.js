@@ -83,8 +83,49 @@ document.addEventListener("DOMContentLoaded", function () {
             caja_trasera_login.style.display = "block";
         }
     }
+
+    // Manejo de inicio de sesión utilizando Json para personalización de mensajes con sweetAlert2
+if (formulario_login) {
+    formulario_login.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita el envío tradicional
+
+        const formData = new FormData(formulario_login);
+
+        fetch("controlador/loginControlador.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // ✅ Redirigir a la vista que tenemos en loginControlador cuando es success con JS
+                window.location.href = data.redirect;
+            } else {
+                // Mensaje de error utilizando interfaz personalizada con SweetAlert2
+                Swal.fire({
+                    icon: "error",
+                    title: "Inicio de sesión fallido",
+                    text: data.error,
+                    confirmButtonColor: "#dc3545",
+                    /*timer:2000,
+                    showConfirmButton: false */ //Temporizar el mensaje para que se cierre automáticamente 1000=1s                
+                });
+            }
+        })
+        .catch(error => {
+            console.error("❌ Error en el inicio de sesión:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Error inesperado",
+                text: "No se pudo procesar la solicitud. Intenta nuevamente.",
+                confirmButtonColor: "#dc3545"
+            });
+        });
+    });
+}
+
    
-    //MANEJO DEL REGISTRO DE USUARIOS    
+    //Manejo de registro usuarios con formato Json y mensajes personalizados con sweetAlert2    
 
     if (formulario_register) {
         formulario_register.addEventListener("submit", function (event) {
