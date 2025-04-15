@@ -62,7 +62,10 @@
 
     // Validar que no haya campos vacíos
     if (!$id_usuario || !$nombre || !$usuario || !$correo || !$id_rol) {        
-        echo json_encode(["success" => false, "error" => "⚠️ Todos los campos son obligatorios."]);
+        echo json_encode
+        (["success" => false, 
+          "error" => "⚠️ Todos los campos son obligatorios."
+      ]);
         exit();
     }
 
@@ -72,20 +75,23 @@
         exit();
     }
 
-    // Intentar actualizar los datos del usuario
+    // Ejecutat actualizar los datos del usuario en la actualización del modelo
     $resultado = UsuarioModelo::editarUsuario($id_usuario, $nombre, $usuario, $correo, $id_rol);
 
     error_log("📌 Resultado en PHP: " . print_r($resultado, true));
 
-if ($resultado === true) {        
-    echo json_encode(["success" => true, "message" => "✅ Cambios registrados exitosamente."]);
-} else {        
-    echo json_encode(["success" => false, "error" => "⚠️ Error en el registro."]);
-}
-exit();
-
+    // Mostrar mensajes según el resultado devuelto
+    if ($resultado === true) {
+      echo json_encode([
+          "success" => true,
+          "message" => "✅ Usuario actualizado correctamente."
+      ]);
+    } else {
+      echo json_encode([
+          "success" => false,
+          "error" => $resultado // Este ya trae mensajes como "No hubo cambios" o "Correo ya existe"
+      ]);
+    }
+    exit();
   }
-  // 📌 Si no se reconoce la acción 
-  echo json_encode(["success" => false, "error" => "⚠️ Acción no válida."]);
-  exit();
 ?>

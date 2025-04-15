@@ -89,11 +89,12 @@ class UsuarioModelo {
      */
     public static function editarUsuario($id_usuario, $nombre, $usuario, $correo, $id_rol) {
         $conexion = Conexion::conectar();
+
         //Validar que la conexión a la BD sea exitosa
         if (!$conexion) {
             return "❌ ERROR: No se pudo conectar a la base de datos.";
         }
-        // Verificar si el usuario existe trayendo el id desde el modal que se selecciona para editar        
+        /* Verificar si el usuario existe trayendo el id desde el modal que se selecciona para editar        
         $sql_verificar = "SELECT id_usuario FROM Usuarios WHERE id_usuario = ?";
         $stmt = $conexion->prepare($sql_verificar);
         if (!$stmt) {
@@ -105,7 +106,9 @@ class UsuarioModelo {
 
         if ($stmt->num_rows === 0) {
             return "⚠️ ERROR: El usuario no existe.";
-        }
+        }*/ 
+        /*El anterior segmento no se tiene en cuenta ya que el usuario se está tomando de la lista de usuarios que han sido sacados 
+        de la base de datos*/
 
         // Verificar si el correo o nombre de usuario ya existen en otro usuario
         $sql_verificar_existencia = "SELECT id_usuario FROM Usuarios WHERE (correo_corporativo = ? OR nombre_usuario = ?) AND id_usuario != ?";

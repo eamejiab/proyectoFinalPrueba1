@@ -264,53 +264,71 @@ if (formEditar) {
         const rol = document.getElementById("editRol").value;
 
         if (!idUsuario || !nombre || !usuario || !correo || !rol) {
-            alert("⚠️ Todos los campos deben estar llenos.");
+            Swal.fire({
+                icon: "warning",
+                title: "Campos incompletos",
+                text: "⚠️ Todos los campos deben estar llenos.",
+                confirmButtonColor: "#f27474"
+            });
             return;
         }
+            //Código para generar el mensaje preguntando si guardar cambios al darle clic en el botón guardar cambios
+        Swal.fire({
+            title: "¿Guardar cambios?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Sí, guardar",
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch("../controlador/UsuarioControlador.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({
+                        accion: "editar",
+                        id_usuario: idUsuario,
+                        nombre: nombre,
+                        usuario: usuario,
+                        correo: correo,
+                        rol: rol
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "¡Éxito!",
+                            text: data.message,
+                            confirmButtonColor: "#28a745"
+                        }).then(() => {
+                            location.reload(); // 🔄 Recargar para ver los cambios actualizados
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Sin cambios",
+                            text: data.error,
+                            confirmButtonColor: "#dc3545"
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error en la solicitud:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error inesperado",
+                        text: "❌ Hubo un problema con la conexión al servidor.",
+                        confirmButtonColor: "#dc3545"
+                    });
+                });
 
-        // Confirmación antes de enviar la actualización
-        if (!confirm("¿Estás seguro de que deseas guardar los cambios?")) {
-            console.log("⏹️ Edición cancelada por el usuario.");
-            return;
-        }
-
-        console.log("📌 Guardando cambios:", { idUsuario, nombre, usuario, correo, rol });
-
-        // Enviar datos al servidor mediante Fetch API
-        fetch("../controlador/UsuarioControlador.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({
-                accion: "editar",
-                id_usuario: idUsuario,
-                nombre: nombre,
-                usuario: usuario,
-                correo: correo,
-                rol: rol
-            })
-        })
-        .then(response => {
-            console.log("Estado de la respuesta:", response.status); // Para verificar si el servidor responde correctamente
-            return response.json(); // Convertimos la respuesta a JSON
-        })
-        .then(data => {
-            console.log("Respuesta del servidor:", data); // Ver qué responde el backend
-        
-            if (data.success) {
-                alert(data.message);
-            } else {
-                alert("Error: " + data.error);
+                cerrarModal(); // 👈 Ocultar el modal
             }
-        })
-        .catch(error => {
-            console.error("Error en la solicitud:", error);
-            alert("❌ Hubo un error en la conexión con el servidor.");
-        });        
-
-        cerrarModal(); // Cerrar modal después de guardar cambios
+        });
     });
-} else {
-    console.warn("⚠️ No se encontró el formulario de edición en el DOM.");
 }
 
 /*

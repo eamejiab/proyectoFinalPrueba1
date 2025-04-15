@@ -42,7 +42,11 @@ if (!$resultado) {
     <title>Gestión de Usuarios</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/styleVistas.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>        
+<!--Librería de AJAX para las conexiones con las bases de datos-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+<!--Biblioteca para utilizar sweetAlert2 para las notificaciones--> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      
 </head>
 <body>
     <main class="contenedorPrincipal">
