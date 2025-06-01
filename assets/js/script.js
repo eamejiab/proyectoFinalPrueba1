@@ -91,7 +91,7 @@ if (formulario_login) {
 
         const formData = new FormData(formulario_login);
 
-        fetch("controlador/loginControlador.php", {
+        fetch("controlador/LoginControlador.php", {
             method: "POST",
             body: formData
         })
@@ -151,7 +151,7 @@ if (formulario_login) {
                 } else {
                     Swal.fire({
                         icon: "error",
-                        title: "Error en el registro",
+                        title: "No es posible el registro",
                         text: data.error,
                         confirmButtonColor: "#dc3545",
                     });
@@ -308,7 +308,7 @@ if (formEditar) {
                         });
                     } else {
                         Swal.fire({
-                            icon: "error",
+                            icon: "info",
                             title: "Sin cambios",
                             text: data.error,
                             confirmButtonColor: "#dc3545"

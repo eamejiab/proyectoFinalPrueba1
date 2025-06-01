@@ -24,7 +24,7 @@ class UsuarioModelo {
         $stmt->store_result();
         //Si resultado arroja 1 valor muestra el mensaje/
         if ($stmt->num_rows > 0) {
-            return "⚠️ ATENCIÓN: El usuario o correo ya están registrados.";
+            return "ℹ️ El usuario o correo ya están registrados.";
         }
 
         // Se prepara la consulta para insertar los parámetros a la tabla de usuarios según las entradas en el formulario de registro
@@ -137,7 +137,7 @@ class UsuarioModelo {
         if ($stmt->affected_rows > 0) {
             return true; // ✅ Usuario actualizado con éxito
         } else {
-            return "⚠️ INFO: No hubo cambios en la información enviada.";
+            return "ℹ️ INFO: No hubo cambios en la información enviada.";
         }
     }
 }
